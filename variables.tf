@@ -6,16 +6,16 @@ variable "tenancy_ocid" {
 }
 
 variable "cmp_lvl1" {
-  type        = map(any)
-  default     = {}
+  type    = map(any)
+  default = {}
 }
 
 variable "cmp_lvl2" {
-  type        = map(any)
-  default     = {}
+  type    = map(any)
+  default = {}
 }
 
 variable "cmp_lvl3" {
-  type        = map(any)
-  default     = {}
+  type    = map(any)
+  default = {}
 }

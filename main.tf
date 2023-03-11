@@ -22,7 +22,7 @@ resource "oci_identity_compartment" "lvl1" {
 
   #Optional
   freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
-  defined_tags = lookup(each.value, "defined_tags", {})
+  defined_tags  = lookup(each.value, "defined_tags", {})
 }
 
 resource "oci_identity_compartment" "lvl2" {
@@ -36,7 +36,7 @@ resource "oci_identity_compartment" "lvl2" {
 
   #Optional
   freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
-  defined_tags = lookup(each.value, "defined_tags", {})
+  defined_tags  = lookup(each.value, "defined_tags", {})
 }
 
 resource "oci_identity_compartment" "lvl3" {
@@ -50,5 +50,5 @@ resource "oci_identity_compartment" "lvl3" {
 
   #Optional
   freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
-  defined_tags = lookup(each.value, "defined_tags", {})
+  defined_tags  = lookup(each.value, "defined_tags", {})
 }
