@@ -7,4 +7,5 @@ module "cmp" {
   cmp_lvl1     = var.cmp_lvl1
   cmp_lvl2     = var.cmp_lvl2
   cmp_lvl3     = var.cmp_lvl3
+  cmp_lvl4     = var.cmp_lvl4
 }
