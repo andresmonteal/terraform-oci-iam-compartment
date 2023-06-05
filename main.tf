@@ -29,7 +29,7 @@ resource "oci_identity_compartment" "lvl2" {
   #Required
   for_each = var.cmp_lvl2
 
-  compartment_id = oci_identity_compartment.lvl1[each.value["parent"]].id
+  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
@@ -43,7 +43,7 @@ resource "oci_identity_compartment" "lvl3" {
   #Required
   for_each = var.cmp_lvl3
 
-  compartment_id = oci_identity_compartment.lvl2[each.value["parent"]].id
+  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
@@ -57,7 +57,35 @@ resource "oci_identity_compartment" "lvl4" {
   #Required
   for_each = var.cmp_lvl4
 
-  compartment_id = oci_identity_compartment.lvl3[each.value["parent"]].id
+  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  name           = each.key
+  description    = lookup(each.value, "description", each.key)
+  enable_delete  = lookup(each.value, "enable_delete", false)
+
+  #Optional
+  freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
+  defined_tags  = lookup(each.value, "defined_tags", {})
+}
+
+resource "oci_identity_compartment" "lvl5" {
+  #Required
+  for_each = var.cmp_lvl4
+
+  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  name           = each.key
+  description    = lookup(each.value, "description", each.key)
+  enable_delete  = lookup(each.value, "enable_delete", false)
+
+  #Optional
+  freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
+  defined_tags  = lookup(each.value, "defined_tags", {})
+}
+
+resource "oci_identity_compartment" "lvl6" {
+  #Required
+  for_each = var.cmp_lvl4
+
+  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)

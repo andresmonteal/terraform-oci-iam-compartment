@@ -24,3 +24,13 @@ variable "cmp_lvl4" {
   type    = map(any)
   default = {}
 }
+
+variable "cmp_lvl5" {
+  type    = map(any)
+  default = {}
+}
+
+variable "cmp_lvl6" {
+  type    = map(any)
+  default = {}
+}
