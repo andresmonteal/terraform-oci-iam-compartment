@@ -1,7 +1,7 @@
-tenancy_ocid = "tenant id"
+tenancy_ocid = "tenant-id"
 
 cmp_lvl1 = {
-  "cpm-networking" = {
+  "cmp-networking" = {
     description = "compartment used to store networking resources"
   },
   "cmp-security" = {
@@ -11,21 +11,20 @@ cmp_lvl1 = {
     description = "compartment used to store monitoring resources"
   },
   "cmp-app" = {
-    description = "compartment used to store app resources"
+    description = "compartment used to store sicop app resources"
+  },
+  "cmp-sandbox" = {
+    description = "compartment used to store sandbox resources"
   }
 }
 
 cmp_lvl2 = {
-  "cmp-app-dev" = {
-    parent      = "cmp-sicop"
-    description = "compartment used to store app dev resources"
+  "cmp-app-np" = {
+    parent      = "cmp-app"
+    description = "compartment used to store sicop non prd app resources"
   },
-  "cmp-app-qa" = {
-    parent      = "cmp-sicop"
-    description = "compartment used to store app qa resources"
-  },
-  "cmp-app-prd" = {
-    parent      = "cmp-sicop"
-    description = "compartment used to store app prd resources"
+  "cmp-app-pr" = {
+    parent      = "cmp-app"
+    description = "compartment used to store sicop prd app resources"
   }
 }

@@ -101,4 +101,6 @@ resource "oci_identity_compartment" "lvl6" {
   #Optional
   freeform_tags = merge(lookup(each.value, "freeform_tags", {}), local.default_freeform_tags)
   defined_tags  = lookup(each.value, "defined_tags", {})
+
+  depends_on = [oci_identity_compartment.lvl5]
 }
