@@ -45,7 +45,7 @@ resource "oci_identity_compartment" "lvl3" {
   for_each = var.cmp_lvl3
 
   #Required
-  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  compartment_id = try(oci_identity_compartment.lvl2[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
@@ -61,7 +61,7 @@ resource "oci_identity_compartment" "lvl4" {
   for_each = var.cmp_lvl4
 
   #Required
-  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  compartment_id = try(oci_identity_compartment.lvl3[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
@@ -77,7 +77,7 @@ resource "oci_identity_compartment" "lvl5" {
   for_each = var.cmp_lvl4
 
   #Required
-  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  compartment_id = try(oci_identity_compartment.lvl4[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
@@ -93,7 +93,7 @@ resource "oci_identity_compartment" "lvl6" {
   for_each = var.cmp_lvl4
 
   #Required
-  compartment_id = try(oci_identity_compartment.lvl1[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
+  compartment_id = try(oci_identity_compartment.lvl5[each.value["parent"]].id, data.oci_identity_compartments.parent[each.key].compartments[0].id)
   name           = each.key
   description    = lookup(each.value, "description", each.key)
   enable_delete  = lookup(each.value, "enable_delete", false)
